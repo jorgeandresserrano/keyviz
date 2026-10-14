@@ -70,6 +70,24 @@ If you want to contribute or build the latest features from the source, ensure y
     npx tauri build
     ```
 
+### Portable apps (no installer)
+
+Install Node.js 22, Rust, and the [Tauri platform prerequisites](https://v2.tauri.app/start/prerequisites/), then run on the platform you want to build:
+
+```bash
+npm ci
+npm run build:portable
+```
+
+The ZIP appears in `portable/`, named with the app version, platform, and architecture.
+
+* **macOS:** Extract the ZIP and open `keyviz.app`. Build on Apple Silicon for arm64 or an Intel Mac for x64. Grant Input Monitoring and Accessibility permissions. Local builds are unsigned and not notarized; macOS may require approval in Privacy & Security before opening.
+* **Windows:** Extract the ZIP and run `keyviz.exe`. The Microsoft Edge WebView2 Runtime must already be installed. No Keyviz installer or administrator privileges are required.
+
+Portable means no app installer; settings still use the normal per-user application data directory. The app runs from the system tray/menu bar; open Settings or Quit from its icon.
+
+The **Build portable apps** GitHub Actions workflow builds both macOS architectures and Windows x64 on pull requests, version tags, or manual runs. Download the ZIPs from the workflow's artifacts.
+
 <br/>
 
 
